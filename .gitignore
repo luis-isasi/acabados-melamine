@@ -1,0 +1,9 @@
+node_modules
+
+.history
+
+.next
+
+tailwind.configPrueba.js
+public/css/tailwind-build.css
+

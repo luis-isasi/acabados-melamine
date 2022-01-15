@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+/* tailwind base => basicamente es un reseteo de css asi todos los navegadores tienen los mismos styles para todas las etiquetas de html */
+@tailwind base;
+/* luego se añade los componente de tailwind, tailwind no lleva muchos componentes */
+@tailwind components;
+/* luego se agrega las clases de utilidad  */
+@tailwind utilities;
+
+/* 
+Tienen que ir en ese orden para que las clases de utilidad predominen sobre el reset y los componentes, de lo contrario
+los styles de tailwind base predominarán por encima de las clases de tailwind
+*/
+
+@layer utilities {
+  .caret-primary {
+    caret-color: #9c86f9;
+  }
+
+  .caret-red {
+    caret-color: red;
+  }
+
+  .scrool-none::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 8px;
+  }
+
+  .bg-scroolbar-white::-webkit-scrollbar-track {
+    background-color: white;
+  }
+
+  .scroolbar::-webkit-scrollbar-thumb {
+    background-color: #aeaeb1;
+    border-radius: 12px;
+    border: 1px solid white;
+  }
+
+  .transition-hover-text {
+    @apply transition-all duration-100 ease-in-out;
+  }
+
+  .container-login-register {
+    @apply bg-primary-primary w-full h-full box-border px-4 flex flex-col justify-center items-center -z-1 absolute top-0;
+  }
+
+  .course-content-title {
+    @apply font-extrabold text-xl md:text-2xl mb-5;
+  }
+
+  .btn-transition {
+    @apply transition-colors duration-150 ease-in-out;
+  }
+
+  .btn-md {
+    @apply min-w-max box-border border-2 py-3 px-7 cursor-pointer focus:outline-none font-extrabold text-base text-center rounded-md;
+  }
+
+  .btn-lg {
+    @apply min-w-max box-border border-2 py-4 px-8 cursor-pointer focus:outline-none font-extrabold text-base text-center rounded-md;
+  }
+
+  .btn-invert-gray {
+    @apply btn-transition text-base-lighter active:text-white border-base-lighter active:border-primary-light active:bg-primary-light;
+  }
+
+  .btn-primary {
+    @apply btn-transition bg-primary-main border-primary-main hover:border-primary-light text-white hover:bg-primary-light;
+  }
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
