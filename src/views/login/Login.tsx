@@ -1,14 +1,22 @@
+import { useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
+import { useContextAuth } from '@Context/contextAuth';
 import LoginForm from './components/LoginForm';
 import useResponsive from '@Hooks/useResponsive';
 
 const Login = () => {
   const router = useRouter();
+  const { user } = useContextAuth();
+
   const isMobile = useResponsive({
     maxMediaQuery: 768,
   });
+
+  useEffect(() => {
+    user && router.push('/home');
+  }, [user]);
 
   const onSuccess = () => {
     const nextPage = router.query?.nextPage || '/home';
