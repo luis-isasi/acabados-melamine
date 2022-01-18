@@ -23,7 +23,7 @@
       "@Constans": ["src/constans.ts"],
       "@Placeholders/*": ["src/Placeholders/*"],
       "@Utils": ["src/utils.ts"],
-      "@Types/*": ["src/typeswith/*"],
+      "@Types/*": ["src/types/*"],
       "@Services/*": ["src/services/*"],
       "@Services": ["src/services/index.tsx"],
       "@Hoc/*": ["src/hoc/*"],
