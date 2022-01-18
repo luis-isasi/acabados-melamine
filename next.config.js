@@ -6,4 +6,13 @@ module.exports = {
     loader: 'imgix',
     path: '',
   },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/login',
+        permanent: true,
+      },
+    ];
+  },
 };

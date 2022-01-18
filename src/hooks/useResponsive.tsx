@@ -29,21 +29,19 @@ const useResponsive = ({
 
     let screen;
 
-    //Si solo hay un minMediaQuery, solo evaluamos si es mayor a esa media query
     if (minMediaQuery && !maxMediaQuery) {
       screen = widthScreen > minMediaQuery;
     }
 
-    //Si solo hay un maxMediaQuery, solo evaluamos si es min a esa media query
     if (maxMediaQuery && !minMediaQuery) {
       screen = widthScreen < maxMediaQuery;
     }
-    //Si solo hay minMediaQuery y maxMediaQuery, evaluamos si es menos al min y al max de la media query
+
     if (minMediaQuery && maxMediaQuery) {
       screen = widthScreen > minMediaQuery && widthScreen < maxMediaQuery;
     }
 
-    setIsScreen(screen);
+    isScreen !== screen && setIsScreen(screen);
   };
 
   return isScreen;

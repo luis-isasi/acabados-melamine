@@ -1,5 +1,1 @@
-const Login = () => {
-  return <div>Desde login</div>;
-};
-
-export default Login;
+export { default } from '@Views/login';

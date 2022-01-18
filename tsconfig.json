@@ -27,7 +27,8 @@
       "@Utils": ["src/utils.ts"],
       "@Services/*": ["src/services/*"],
       "@Services": ["src/services/index.tsx"],
-      "@Hoc/*": ["src/hoc/*"]
+      "@Hoc/*": ["src/hoc/*"],
+      "@Icons/*": ["src/assets/Icons/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
