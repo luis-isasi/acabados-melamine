@@ -16,7 +16,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen h-auto w-full flex justify-center ">
+    <div className="min-h-screen h-auto w-full flex justify-center">
       <div
         style={{
           borderTopRightRadius: isMobile ? '0' : '150px',

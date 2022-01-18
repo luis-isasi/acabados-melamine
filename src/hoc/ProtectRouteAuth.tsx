@@ -16,11 +16,13 @@ const ProtectRouteAuth = ({ children }) => {
     if (!isLoading && !user) {
       router.push(`/login/?nextPage=${to}`);
     }
-  }, [user, isLoading]);
+  }, [user, isLoading, router]);
 
   if (isLoading || !user) return <LoadingScreen />;
 
-  return <>{children}</>;
+  if (user) return <>{children}</>;
+
+  return null;
 };
 
 export default ProtectRouteAuth;
