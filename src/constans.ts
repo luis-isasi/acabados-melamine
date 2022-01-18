@@ -1,5 +1,3 @@
-export {};
-
 export const USER_SESSION = 'user_session';
 export const USER_SETTINGS = 'user_settings';
 
@@ -13,7 +11,3 @@ export const MEDIAQUERY_2X1 = 1536;
 //Themes
 export const DARK = 'dark';
 export const LIGHT = 'light';
-
-//Switch
-export const NEXT = 'NEXT';
-export const PREVIOUS = 'PREVIOUS';

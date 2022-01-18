@@ -1,28 +1,26 @@
-// import * as React from 'react';
-// import { useRouter } from 'next/router';
+import * as React from 'react';
+import { useRouter } from 'next/router';
 
-// import { useContextAuth } from '@Context/contextAuth';
-// import LoadingScreen from '@Components/LoadingScreen';
+import { useContextAuth } from '@Context/contextAuth';
+import LoadingScreen from '@Components/LoadingScreen';
 
-// const ProtectRouteAuth = ({ children }) => {
-//   const router = useRouter();
-//   const { user, isLoading } = useContextAuth();
+const ProtectRouteAuth = ({ children }) => {
+  const router = useRouter();
+  const { user, isLoading } = useContextAuth();
 
-//   //get the current path
-//   const to = router.pathname;
+  //get the current path
+  const to = router.pathname;
 
-//   React.useEffect(() => {
-//     //pass the current
-//     if (!isLoading && !user) {
-//       router.push(`/login/?nextPage=${to}`);
-//     }
-//   }, [user, isLoading]);
+  React.useEffect(() => {
+    //pass the current
+    if (!isLoading && !user) {
+      router.push(`/login/?nextPage=${to}`);
+    }
+  }, [user, isLoading]);
 
-//   if (isLoading || !user) return <LoadingScreen />;
+  if (isLoading || !user) return <LoadingScreen />;
 
-//   return <>{children}</>;
-// };
+  return <>{children}</>;
+};
 
-// export default ProtectRouteAuth;
-
-export {};
+export default ProtectRouteAuth;
