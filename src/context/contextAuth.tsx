@@ -2,7 +2,7 @@ import { createContext, useContext, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 import { USER_SESSION, USER_SETTINGS } from '@Constans';
-import { UserI } from 'src/types/user';
+import { UserI } from '@Types/user';
 
 interface TypeContextUser {
   user: UserI;
