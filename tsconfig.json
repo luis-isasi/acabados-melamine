@@ -21,8 +21,6 @@
       "@Hooks/*": ["src/hooks/*"],
       "@Views/*": ["src/views/*"],
       "@Constans": ["src/constans.ts"],
-      "@Types": ["src/types/index.ts"],
-      "@Types/*": ["src/types/*"],
       "@Placeholders/*": ["src/Placeholders/*"],
       "@Utils": ["src/utils.ts"],
       "@Services/*": ["src/services/*"],

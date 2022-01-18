@@ -1,5 +1,5 @@
 import { fetcher } from '@Utils';
-import { UserI } from '@Types/user';
+import { UserI } from 'src/types/user';
 
 export const login = ({
   email,
