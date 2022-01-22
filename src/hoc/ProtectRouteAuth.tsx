@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 
 import { useContextAuth } from '@Context/contextAuth';
 import LoadingScreen from '@Components/LoadingScreen';
+import LayoutAuthenticated from '@Components/layouts/LayoutAuthenticated';
 
 const ProtectRouteAuth = ({ children }) => {
   const router = useRouter();
@@ -10,19 +11,29 @@ const ProtectRouteAuth = ({ children }) => {
 
   //get the current path
   const to = router.pathname;
+  console.log({ user, isLoading });
 
   React.useEffect(() => {
     //pass the current
-    if (!isLoading && !user) {
+
+    if (!isLoading && !user && to !== '/login') {
       router.push(`/login/?nextPage=${to}`);
     }
-  }, [user, isLoading, router]);
+  }, [user, isLoading]);
 
-  if (isLoading || !user) return <LoadingScreen />;
+  if (isLoading) return <LoadingScreen />;
 
-  if (user) return <>{children}</>;
+  //is logged
+  if (router.pathname !== '/login' && user) {
+    return <LayoutAuthenticated>{children}</LayoutAuthenticated>;
+  }
 
-  return null;
+  //is not logged
+  if (router.pathname === '/login' && !user) {
+    return <>{children}</>;
+  }
+
+  return <LoadingScreen />;
 };
 
 export default ProtectRouteAuth;
