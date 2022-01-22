@@ -59,7 +59,9 @@ const LayoutAuthenticated = ({ children }) => {
               )}
             </section>
           </header>
-          <div className="max-h-full h-full overflow-y-auto">{children}</div>
+          <div className="max-h-full h-full overflow-y-auto scrool-none bg-scroolbar-white scroolbar">
+            {children}
+          </div>
         </div>
       </div>
     </ProtectRouteAuth>
