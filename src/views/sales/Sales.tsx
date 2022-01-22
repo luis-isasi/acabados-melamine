@@ -1,8 +1,10 @@
 const Sales = () => {
   return (
-    <div>
-      <h1>Sales</h1>
-    </div>
+    <h3 className="font-bold text-4xl">
+      DESDE VENTAS
+      <br />
+      SONIA FALTA ESTA VISTA 🙂
+    </h3>
   );
 };
 
