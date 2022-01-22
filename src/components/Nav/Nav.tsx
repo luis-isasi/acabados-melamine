@@ -19,13 +19,13 @@ const Nav = () => {
             <NavItem Icon={IconHome} text="Home" path="/home" />
           </li>
           <li className="mb-7">
-            <NavItem Icon={IconSale} text="Ventas" path="/sale" />
+            <NavItem Icon={IconSale} text="Ventas" path="/sales" />
           </li>
           <li className="mb-7">
-            <NavItem Icon={IconClient} text="Clientes" path="/client" />
+            <NavItem Icon={IconClient} text="Personas" path="/persons" />
           </li>
           <li className="mb-7">
-            <NavItem Icon={IconUser} text="Usuarios" path="/usuario" />
+            <NavItem Icon={IconUser} text="Usuarios" path="/users" />
           </li>
           <li className="mb-7">
             <NavItem Icon={IconInventory} text="Inventario" path="/inventory" />

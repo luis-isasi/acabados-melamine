@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 import { useContextAuth } from '@Context/contextAuth';
 import ProtectRouteAuth from '@Hoc/ProtectRouteAuth';
@@ -6,6 +7,24 @@ import Nav from '@Components/Nav';
 
 const LayoutAuthenticated = ({ children }) => {
   const { user } = useContextAuth();
+  const router = useRouter();
+
+  const getTitle = () => {
+    switch (router.pathname) {
+      case '/home':
+        return 'Home';
+      case '/sales':
+        return 'Ventas';
+      case '/persons':
+        return 'Personas';
+      case '/users':
+        return 'Usuarios';
+      case '/inventory':
+        return 'Inventario';
+      default:
+        return '';
+    }
+  };
 
   return (
     <ProtectRouteAuth>
@@ -30,16 +49,17 @@ const LayoutAuthenticated = ({ children }) => {
             <Nav />
           </div>
         </div>
-        <div className="w-full p-4 px-8">
-          <div className="flex justify-end mb-4">
+        <div className="flex flex-col w-full max-h-screen h-screen p-4 px-8">
+          <header className="flex justify-between mb-4">
+            <h3 className="text-2xl font-bold">{getTitle()}</h3>
             <section className="flex items-center max-w-min">
               <div className="h-5 w-5 rounded-full bg-gray-900 mr-2" />
               {user && (
                 <p className="bl-text-xl font-bold">{user.user.username}</p>
               )}
             </section>
-          </div>
-          <div className="">{children}</div>
+          </header>
+          <div className="max-h-full h-full overflow-y-auto">{children}</div>
         </div>
       </div>
     </ProtectRouteAuth>
