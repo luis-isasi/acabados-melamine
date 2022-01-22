@@ -12,7 +12,7 @@ const NavItem = ({ Icon, text, path }: Props) => {
   const isActive = router.pathname === path;
 
   const onClick = () => {
-    // router.push(path);
+    router.push(path);
   };
 
   return (

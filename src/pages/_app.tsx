@@ -6,13 +6,12 @@ import type { AppProps } from 'next/app';
 import { QueryClientProvider, QueryClient } from 'react-query';
 import { Hydrate } from 'react-query/hydration';
 import { ContextAuthProvider } from '@Context/contextAuth';
+import LayoutAuthenticated from '@Components/layouts/LayoutAuthenticated';
 
 import '../../styles/global.css';
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
-  enabledDark?: boolean;
-  darkMode?: boolean;
 };
 
 type AppPropsWithLayout = AppProps & {
@@ -26,7 +25,9 @@ const App: React.FC<AppPropsWithLayout> = ({ Component, pageProps }) => {
     <ContextAuthProvider>
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
-          <Component {...pageProps} />
+          <LayoutAuthenticated>
+            <Component {...pageProps} />
+          </LayoutAuthenticated>
         </Hydrate>
       </QueryClientProvider>
     </ContextAuthProvider>

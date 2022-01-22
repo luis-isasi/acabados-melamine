@@ -25,7 +25,7 @@ const Nav = () => {
             <NavItem Icon={IconClient} text="Clientes" path="/client" />
           </li>
           <li className="mb-7">
-            <NavItem Icon={IconUser} text="Usuarios" path="/user" />
+            <NavItem Icon={IconUser} text="Usuarios" path="/usuario" />
           </li>
           <li className="mb-7">
             <NavItem Icon={IconInventory} text="Inventario" path="/inventory" />
