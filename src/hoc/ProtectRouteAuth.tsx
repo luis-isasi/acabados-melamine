@@ -14,7 +14,6 @@ const ProtectRouteAuth = ({ children }) => {
 
   React.useEffect(() => {
     //pass the current
-
     if (!isLoading && !user && to !== '/login') {
       router.push(`/login/?nextPage=${to}`);
     }
@@ -25,6 +24,10 @@ const ProtectRouteAuth = ({ children }) => {
   //is logged
   if (router.pathname !== '/login' && user) {
     return <LayoutAuthenticated>{children}</LayoutAuthenticated>;
+  }
+
+  if (router.pathname === '/login' && user) {
+    return <>{children}</>;
   }
 
   //is not logged
