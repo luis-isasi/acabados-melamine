@@ -11,7 +11,6 @@ const ProtectRouteAuth = ({ children }) => {
 
   //get the current path
   const to = router.pathname;
-  console.log({ user, isLoading });
 
   React.useEffect(() => {
     //pass the current
