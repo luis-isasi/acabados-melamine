@@ -8,7 +8,7 @@ import IconVisibilityOff from '@Icons/IconVisibilityOff';
 import IconUser from '@Icons/IconUser';
 import IconPassword from '@Icons/IconPassword';
 import { useContextAuth } from '@Context/contextAuth';
-import MessageError from './MessageError';
+import MessageError from '@Components/molecules/MessageError';
 
 interface Inputs {
   email: string;
@@ -23,7 +23,7 @@ const LoginForm = ({ onSuccess }: Props) => {
   const { setDataUserLocalStorage } = useContextAuth();
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
-  const { data, isLoading, isError, mutate } = useMutation('login', login, {
+  const { data, isLoading, mutate } = useMutation('login', login, {
     onSuccess: (data) => {
       if (!data.error && data.user) {
         setDataUserLocalStorage(data);

@@ -1,5 +1,5 @@
 import { fetcher } from '@Utils';
-import { UserI } from '@Types/user';
+import { UserI, RegisterDataI } from '@Types/user';
 
 export const login = ({
   email,
@@ -22,18 +22,20 @@ export const register = ({
   username,
   email,
   password,
-}: {
-  username: string;
-  email: string;
-  password: string;
-}) => {
-  return fetcher({
+  dateOfBirth,
+  phone,
+  dni,
+}: RegisterDataI) => {
+  return fetcher<UserI>({
     endpoint: '/auth/local/register',
     method: 'POST',
     body: {
       username,
       email,
       password,
+      dateOfBirth,
+      phone,
+      dni,
     },
   });
 };

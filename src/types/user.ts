@@ -1,3 +1,5 @@
+// respononses
+
 export interface UserI {
   jwt: string;
   user: {
@@ -10,4 +12,14 @@ export interface UserI {
     createdAt: string;
     updatedAt: string;
   };
+}
+
+// resquest
+export interface RegisterDataI {
+  username: string;
+  email: string;
+  password: string;
+  dateOfBirth: string;
+  phone: string;
+  dni: number;
 }

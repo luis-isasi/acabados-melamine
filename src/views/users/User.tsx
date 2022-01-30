@@ -1,8 +1,12 @@
 import IconDelete from '@Icons/IconDelete';
 import IconEdit from '@Icons/IconEdit';
 import IconSearch from '@Icons/IconSearch';
+import FormUserRegister from './components/FormUserRegister';
+import { useQuery } from 'react-query';
 
 const Usuario = () => {
+  // const {} = useQuery('users', async () => {})
+
   return (
     <div
       className="grid h-full w-full grid-cols-1 gap-4"
@@ -70,46 +74,7 @@ const Usuario = () => {
           </div>
         </section>
       </div>
-      <div className="">
-        <h4 className="mb-20 font-bold text-xl">Nuevo Usuario</h4>
-        <form className="bg-yellow-100 rounded-xl p-8 flex flex-col ">
-          <input
-            type="number"
-            placeholder="Ingresar DNI"
-            className="py-2 px-6 focus:outline-none rounded-xl mb-2"
-          />
-          <div className="flex flex-col mb-2">
-            <label>Nombres y Apellidos</label>
-            <input
-              type="text"
-              placeholder=""
-              className="py-2 px-6 focus:outline-none rounded-xl"
-            />
-          </div>
-          <div className="flex flex-col mb-2">
-            <label>Usuario</label>
-            <input
-              type="text"
-              placeholder=""
-              className="py-2 px-6 focus:outline-none rounded-xl"
-            />
-          </div>
-          <div className="flex flex-col mb-2">
-            <label>Contraseña</label>
-            <input
-              type="text"
-              placeholder=""
-              className="py-2 px-6 focus:outline-none rounded-xl"
-            />
-          </div>
-          <button
-            type="submit"
-            className="mt-4 bg-yellow-400 font-bold text-lg px-6 py-2 rounded-xl"
-          >
-            Agregar Usuario
-          </button>
-        </form>
-      </div>
+      <FormUserRegister />
     </div>
   );
 };
