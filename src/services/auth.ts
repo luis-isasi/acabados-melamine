@@ -1,5 +1,5 @@
 import { fetcher } from '@Utils';
-import { UserI, RegisterDataI } from '@Types/user';
+import { UserI, RegisterDataI, DataUserI } from '@Types/user';
 
 export const login = ({
   email,
@@ -37,5 +37,31 @@ export const register = ({
       phone,
       dni,
     },
+  });
+};
+
+export const getAllUsers = () => {
+  return fetcher<DataUserI[]>({
+    endpoint: '/users',
+    withToken: true,
+  });
+};
+
+export const updateUser = (user: DataUserI) => {
+  return fetcher<DataUserI>({
+    endpoint: `/users/${user.id}`,
+    method: 'PUT',
+    withToken: true,
+    body: {
+      ...user,
+    },
+  });
+};
+
+export const deleteUser = (userId: number) => {
+  return fetcher<DataUserI>({
+    endpoint: `/users/${userId}`,
+    method: 'DELETE',
+    withToken: true,
   });
 };

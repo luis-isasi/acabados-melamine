@@ -1,17 +1,21 @@
 // respononses
 
+export interface DataUserI {
+  id: number;
+  username: string;
+  email: string;
+  dateOfBirth: string;
+  phone: number;
+  dni: number;
+  provider?: string;
+  confirmed?: boolean;
+  blocked?: boolean;
+  createdAt?: string;
+  updatedAt?: string;
+}
 export interface UserI {
   jwt: string;
-  user: {
-    id: number;
-    username: string;
-    email: string;
-    provider: string;
-    confirmed: boolean;
-    blocked: boolean;
-    createdAt: string;
-    updatedAt: string;
-  };
+  user: DataUserI;
 }
 
 // resquest
@@ -20,6 +24,6 @@ export interface RegisterDataI {
   email: string;
   password: string;
   dateOfBirth: string;
-  phone: string;
+  phone: number;
   dni: number;
 }

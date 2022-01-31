@@ -8,10 +8,15 @@ import { register as registerUser } from '@Services/auth';
 import { RegisterDataI } from '@Types/user';
 import MessageError from '@Components/molecules/MessageError';
 
-const FormUserRegister = () => {
-  const { isLoading, mutate } = useMutation('register', registerUser, {
+interface Props {
+  onSuccess?: () => void;
+}
+
+const FormUserRegister = ({ onSuccess }: Props) => {
+  const { isLoading, mutate } = useMutation('registeUser', registerUser, {
     onSuccess: () => {
       reset();
+      onSuccess();
     },
   });
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -28,14 +33,14 @@ const FormUserRegister = () => {
   };
 
   return (
-    <div className="">
+    <div>
       <h4 className="mb-20 font-bold text-xl">Nuevo Usuario</h4>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="bg-yellow-100 rounded-xl p-8 flex flex-col"
       >
         <div className="flex flex-col mb-2">
-          <label>Nombres y Apellidos</label>
+          <label className="font-bold">Nombres y Apellidos</label>
           <input
             type="text"
             placeholder=""
@@ -50,7 +55,7 @@ const FormUserRegister = () => {
           </MessageError>
         )}
         <div className="flex flex-col mb-2">
-          <label>Fecha de nacimiento</label>
+          <label className="font-bold">Fecha de nacimiento</label>
           <input
             type="date"
             className="py-2 px-6 focus:outline-none rounded-xl mb-2"
@@ -70,7 +75,7 @@ const FormUserRegister = () => {
         )}
 
         <div className="flex flex-col mb-2">
-          <label>Numero</label>
+          <label className="font-bold">Numero</label>
           <input
             type="number"
             className="py-2 px-6 focus:outline-none rounded-xl mb-2"
@@ -91,7 +96,7 @@ const FormUserRegister = () => {
         )}
 
         <div className="flex flex-col mb-2">
-          <label>Ingresar DNI</label>
+          <label className="font-bold">Ingresar DNI</label>
           <input
             type="number"
             placeholder="Ingresar DNI"
@@ -104,11 +109,11 @@ const FormUserRegister = () => {
             {errors.dni.type === 'required' && 'El DNI es requerido'}
             {(errors.dni.type === 'maxLength' ||
               errors.dni.type === 'minLength') &&
-              'El email debe tener 8 caracteres'}
+              'El DNI debe tener 8 caracteres'}
           </MessageError>
         )}
         <div className="flex flex-col mb-2">
-          <label>Email</label>
+          <label className="font-bold">Email</label>
           <input
             type="text"
             placeholder=""
@@ -126,7 +131,7 @@ const FormUserRegister = () => {
           </MessageError>
         )}
         <div className="flex flex-col mb-2">
-          <label>Password</label>
+          <label className="font-bold">Password</label>
           <div className="flex items-center bg-white rounded-xl h-11 px-4">
             <input
               type={showPassword ? 'text' : 'password'}

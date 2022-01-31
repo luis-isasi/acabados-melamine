@@ -23,7 +23,6 @@ export async function fetcher<DataResponse>({
     try {
       //only there's a token in local storage
       const user = window.localStorage.getItem(USER_SESSION);
-      console.log({ user: JSON.parse(user) });
 
       token = JSON.parse(user)?.jwt;
       if (token) {
