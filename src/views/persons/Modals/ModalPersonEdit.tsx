@@ -2,20 +2,20 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { useMutation } from 'react-query';
 
 import IconClose from '@Icons/IconClose';
-import { updateUser } from '@Services/auth';
+import { updatePerson } from '@Services/person';
 import MessageError from '@Components/molecules/MessageError';
 import ModalBase from '@Modals/ModalBase';
-import { DataUserI } from '@Types/user';
+import { PersonResponseI, PersonDataI } from '@Types/person';
 
 interface Props {
   setIsOpen: (isOpen: boolean) => void;
   isOpen: boolean;
-  user: DataUserI;
+  person: PersonResponseI;
   refetch: () => void;
 }
 
-const ModalUserEdit = ({ setIsOpen, isOpen, user, refetch }: Props) => {
-  const { isLoading, mutate } = useMutation('updateUser', updateUser, {
+const ModalPersonEdit = ({ setIsOpen, isOpen, person, refetch }: Props) => {
+  const { isLoading, mutate } = useMutation('updatePerson', updatePerson, {
     onSuccess: () => {
       refetch();
       setIsOpen(false);
@@ -26,14 +26,14 @@ const ModalUserEdit = ({ setIsOpen, isOpen, user, refetch }: Props) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<DataUserI>({
+  } = useForm<PersonDataI>({
     defaultValues: {
-      ...user,
+      ...person.attributes,
     },
   });
 
-  const onSubmit: SubmitHandler<DataUserI> = (data) => {
-    mutate({ ...data });
+  const onSubmit: SubmitHandler<PersonDataI> = (data) => {
+    mutate({ id: person.id, personData: data });
   };
 
   return (
@@ -49,7 +49,7 @@ const ModalUserEdit = ({ setIsOpen, isOpen, user, refetch }: Props) => {
           </button>
           <div className="bg-white min-w-102 py-8 px-12 rounded-3xl">
             <h4 className="font-bold text-2xl text-center mb-5">
-              Editar Usuario
+              Editar Cliente
             </h4>
             <form
               onSubmit={handleSubmit(onSubmit)}
@@ -156,7 +156,7 @@ const ModalUserEdit = ({ setIsOpen, isOpen, user, refetch }: Props) => {
                 type="submit"
                 className="mt-4 bg-yellow-400 font-bold text-lg px-6 py-2 rounded-xl disabled:bg-gray-500 disabled:text-white disabled:cursor-not-allowed"
               >
-                Actualizar Usuario
+                Actualizar Cliente
               </button>
             </form>
           </div>
@@ -166,4 +166,4 @@ const ModalUserEdit = ({ setIsOpen, isOpen, user, refetch }: Props) => {
   );
 };
 
-export default ModalUserEdit;
+export default ModalPersonEdit;
