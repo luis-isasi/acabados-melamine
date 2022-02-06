@@ -1,12 +1,12 @@
 import Image from 'next/image';
+import { useState } from 'react';
+import { useQuery } from 'react-query';
 
 import IconSearch from '@Icons/IconSearch';
 import FormPersonRegister from './components/FormPersonRegister';
-import { useQuery } from 'react-query';
 import { getAllPersons } from '@Services/person';
 import PersonItem from './components/PersonItem';
 import { useContextAuth } from '@Context/contextAuth';
-import { useState } from 'react';
 
 const Persons = () => {
   const { user } = useContextAuth();

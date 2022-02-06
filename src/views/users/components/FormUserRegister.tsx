@@ -7,19 +7,22 @@ import IconVisibilityOff from '@Icons/IconVisibilityOff';
 import { register as registerUser } from '@Services/auth';
 import { RegisterDataI } from '@Types/user';
 import MessageError from '@Components/molecules/MessageError';
-
+import ModalUserSuccess from '../Modals/ModalUserSuccess';
 interface Props {
   onSuccess?: () => void;
 }
 
 const FormUserRegister = ({ onSuccess }: Props) => {
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [isOpenModalSuccess, setIsOpenModalSuccess] = useState<boolean>(false);
+
   const { isLoading, mutate } = useMutation('registeUser', registerUser, {
     onSuccess: () => {
       reset();
+      setIsOpenModalSuccess(true);
       onSuccess();
     },
   });
-  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const {
     register,
@@ -34,6 +37,10 @@ const FormUserRegister = ({ onSuccess }: Props) => {
 
   return (
     <div>
+      <ModalUserSuccess
+        isOpen={isOpenModalSuccess}
+        setIsOpen={setIsOpenModalSuccess}
+      />
       <h4 className="mb-20 font-bold text-xl">Nuevo Usuario</h4>
       <form
         onSubmit={handleSubmit(onSubmit)}
