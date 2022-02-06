@@ -1,11 +1,19 @@
-const inventory = () => {
+import FormRegisterProduct from './components/FormRegisterProduct';
+
+const Inventory = () => {
+  const onSusccessRegisterProduct = () => {};
+
   return (
-    <h3 className="font-bold text-4xl">
-      DESDE INVENTARIO
-      <br />
-      SONIA FALTA ESTA VISTA 🙂
-    </h3>
+    <div>
+      <div className="mb-5">
+        <h4 className="font-bold text-4xl">Registro de producto</h4>
+        <FormRegisterProduct onSuccess={onSusccessRegisterProduct} />
+      </div>
+      <section>
+        <h4 className="font-bold text-4xl">Lista de productos</h4>
+      </section>
+    </div>
   );
 };
 
-export default inventory;
+export default Inventory;
