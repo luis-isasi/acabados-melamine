@@ -16,7 +16,7 @@ interface Props {
 }
 
 const FormRegisterProduct = ({ onSuccess }: Props) => {
-  const [isOpenModalSuccess, setIsOpenModalSuccess] = useState<boolean>(true);
+  const [isOpenModalSuccess, setIsOpenModalSuccess] = useState<boolean>(false);
   const {
     register,
     handleSubmit,

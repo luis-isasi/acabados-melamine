@@ -1,4 +1,5 @@
 import FormRegisterProduct from './components/FormRegisterProduct';
+import ProductList from './components/ProductList';
 
 const Inventory = () => {
   const onSusccessRegisterProduct = () => {};
@@ -9,9 +10,10 @@ const Inventory = () => {
         <h4 className="font-bold text-4xl">Registro de producto</h4>
         <FormRegisterProduct onSuccess={onSusccessRegisterProduct} />
       </div>
-      <section>
-        <h4 className="font-bold text-4xl">Lista de productos</h4>
-      </section>
+      <div>
+        <h4 className="font-bold text-4xl mb-4">Lista de productos</h4>
+        <ProductList />
+      </div>
     </div>
   );
 };
