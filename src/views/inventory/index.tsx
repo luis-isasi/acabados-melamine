@@ -1,1 +1,1 @@
-export { default } from './Inventory_with';
+export { default } from './Inventory';
