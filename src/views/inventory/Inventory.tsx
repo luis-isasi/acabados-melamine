@@ -39,7 +39,12 @@ const Inventory = () => {
             </div>
           </div>
         </form>
-        {isLoading && <div>Cargando...</div>}
+        {isLoading && (
+          <div className="font-bold text-2xl flex justify-center items-center gap-4">
+            <div className="loader w-5 h-5" />
+            <p> Cargando Productos...</p>
+          </div>
+        )}
         {data && !isLoading && (
           <ProductList products={data} textName={textName} refetch={refetch} />
         )}

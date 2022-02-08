@@ -104,7 +104,7 @@ const FormPersonRegister = ({ onSuccess }: Props) => {
           <label className="font-bold mb-2">Fecha de nacimiento</label>
           <input
             type="date"
-            className="py-2 px-6 focus:outline-none rounded-xl mb-2 border-1 border-gray-400 mb-1"
+            className="py-2 px-6 focus:outline-none rounded-xl mb-2 border-1 border-gray-400"
             {...register('dateOfBirth', {
               required: true,
               pattern: /^\d{4}-\d{2}-\d{2}$/,

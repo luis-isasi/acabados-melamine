@@ -68,7 +68,7 @@ const FormRegisterProduct = ({ onSuccess }: Props) => {
           <div className="w-full flex flex-col mb-3">
             <label className="font-bold mb-2">Código</label>
             <input
-              type="text"
+              type="number"
               placeholder=""
               className="py-2 px-6 focus:outline-none rounded-xl border-1 border-gray-400 mb-1"
               {...register('code', { required: true })}
@@ -84,7 +84,7 @@ const FormRegisterProduct = ({ onSuccess }: Props) => {
           <div className="w-full flex flex-col mb-3">
             <label className="font-bold mb-2">Cantidad</label>
             <input
-              type="text"
+              type="number"
               placeholder=""
               className="py-2 px-6 focus:outline-none rounded-xl border-1 border-gray-400 mb-1"
               {...register('amount', { required: true })}
@@ -99,7 +99,7 @@ const FormRegisterProduct = ({ onSuccess }: Props) => {
           <div className="w-full flex flex-col mb-3">
             <label className="font-bold mb-2">Precio</label>
             <input
-              type="text"
+              type="number"
               placeholder=""
               className="py-2 px-6 focus:outline-none rounded-xl border-1 border-gray-400 mb-1"
               {...register('price', { required: true })}

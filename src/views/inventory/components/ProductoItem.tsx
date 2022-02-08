@@ -15,32 +15,24 @@ const ProductoItem = ({ isPar, product, refetch }: Props) => {
   const [isOpenEdit, setIsOpenEdit] = useState<boolean>(false);
   const [isOpenDelete, setIsOpenDelete] = useState<boolean>(false);
 
-  const onSuccessProductEdit = () => {
-    refetch();
-  };
-
   return (
     <>
-      {
-        <ModalProductEdit
-          isOpen={isOpenEdit}
-          setIsOpen={setIsOpenEdit}
-          product={product}
-          onSuccess={onSuccessProductEdit}
-        />
-      }
-      {
-        <ModalProductDelete
-          isOpen={isOpenDelete}
-          setIsOpen={setIsOpenDelete}
-          idProduct={product.id}
-          refetch={refetch}
-        />
-      }
+      <ModalProductEdit
+        isOpen={isOpenEdit}
+        setIsOpen={setIsOpenEdit}
+        product={product}
+        refetch={refetch}
+      />
+      <ModalProductDelete
+        isOpen={isOpenDelete}
+        setIsOpen={setIsOpenDelete}
+        idProduct={product.id}
+        refetch={refetch}
+      />
       <li
         className={`${
           isPar && 'bg-gray-100'
-        } grid grid-cols-6 py-2 border-b border-gray-200`}
+        } grid grid-cols-6 py-2 border-b items-center border-gray-200`}
       >
         <span>{product.attributes.name}</span>
         <span>{product.attributes.code}</span>

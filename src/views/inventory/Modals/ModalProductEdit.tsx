@@ -11,17 +11,26 @@ interface Props {
   setIsOpen: (isOpen: boolean) => void;
   isOpen: boolean;
   onSuccess?: () => void;
+  refetch: () => void;
 }
 
-const ModalProductEdit = ({ setIsOpen, isOpen, product, onSuccess }: Props) => {
+const ModalProductEdit = ({
+  setIsOpen,
+  isOpen,
+  product,
+  onSuccess,
+  refetch,
+}: Props) => {
   const { isLoading, mutate } = useMutation('updateProduct', updateProduct, {
     onSuccess: () => {
       reset();
       onSuccess && onSuccess();
+      refetch();
       setIsOpen(false);
     },
   });
 
+  console.log({ product });
   const {
     register,
     handleSubmit,
