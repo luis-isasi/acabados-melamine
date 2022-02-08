@@ -1,6 +1,6 @@
 import { fetcher } from '@Utils';
 
-interface ProductI {
+export interface ProductI {
   name: string;
   description: string;
   amount: number;
@@ -10,7 +10,7 @@ interface ProductI {
   updatedAt?: string;
 }
 
-interface ProductResponseI {
+export interface ProductResponseI {
   id: number;
   attributes: ProductI;
 }
@@ -72,7 +72,13 @@ interface UpdateProductI {
   code?: number;
 }
 
-export const updateProduct = async (productData: UpdateProductI) => {
+export const updateProduct = async ({
+  idProduct,
+  productData,
+}: {
+  productData: UpdateProductI;
+  idProduct: number;
+}) => {
   const response = await fetcher<{
     data: ProductResponseI;
     meta: {
@@ -84,7 +90,7 @@ export const updateProduct = async (productData: UpdateProductI) => {
       };
     };
   }>({
-    endpoint: '/productos',
+    endpoint: `/productos/${idProduct}`,
     method: 'PUT',
     withToken: true,
     body: {

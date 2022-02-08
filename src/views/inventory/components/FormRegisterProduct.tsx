@@ -1,6 +1,9 @@
-import MessageError from '@Components/molecules/MessageError';
+import { useMutation } from 'react-query';
 import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
+
+import { createProduct } from '@Services/product';
+import MessageError from '@Components/molecules/MessageError';
 import ModalProductSuccess from '../Modals/ModalProductSuccess';
 
 interface ProductI {
@@ -17,13 +20,24 @@ interface Props {
 
 const FormRegisterProduct = ({ onSuccess }: Props) => {
   const [isOpenModalSuccess, setIsOpenModalSuccess] = useState<boolean>(false);
+  const { isLoading, mutate } = useMutation('createProduct', createProduct, {
+    onSuccess: () => {
+      onSuccess && onSuccess();
+      reset();
+      setIsOpenModalSuccess(true);
+    },
+  });
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<ProductI>();
 
-  const onSubmit: SubmitHandler<ProductI> = (data) => {};
+  const onSubmit: SubmitHandler<ProductI> = (data) => {
+    mutate(data);
+  };
 
   return (
     <>
@@ -112,6 +126,7 @@ const FormRegisterProduct = ({ onSuccess }: Props) => {
           )}
         </div>
         <button
+          disabled={isLoading}
           type="submit"
           className="mt-4 bg-yellow-400 hover:bg-yellow-300 font-bold text-lg px-6 py-2 rounded-xl disabled:bg-gray-500 disabled:text-white disabled:cursor-not-allowed"
         >
