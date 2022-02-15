@@ -1,5 +1,6 @@
-import IconDelete from '@Icons/IconDelete';
-import IconEdit from '@Icons/IconEdit';
+import { formatAmount } from '@Utils';
+import { useState } from 'react';
+import ModalViewSale from '../modals/ModalViewSale';
 
 interface Props {
   isPar: boolean;
@@ -7,8 +8,10 @@ interface Props {
 }
 
 const SaleItem = ({ isPar, sale }: Props) => {
+  const [isOpenModal, setisOpenModal] = useState<boolean>(false);
   return (
     <>
+      {isOpenModal && <ModalViewSale setIsOpen={setisOpenModal} sale={sale} />}
       <li
         className={`${
           isPar && 'bg-gray-100'
@@ -17,7 +20,9 @@ const SaleItem = ({ isPar, sale }: Props) => {
         <span>{sale?.attributes?.clientName}</span>
         <span>{sale?.attributes?.date}</span>
         <span>{sale?.attributes?.dni}</span>
-        <span>{sale?.attributes?.total}</span>
+        <span className="font-semibold">
+          {formatAmount({ amount: sale?.attributes?.total })}
+        </span>
       </li>
     </>
   );

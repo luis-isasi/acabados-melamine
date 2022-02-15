@@ -57,3 +57,25 @@ export async function fetcher<DataResponse>({
 
   return data as MyResponse;
 }
+
+export const formatAmount = ({
+  amount,
+  share,
+  maxDecimal = 2,
+  minDecimal = 2,
+}: {
+  amount: number;
+  share?: boolean;
+  maxDecimal?: number;
+  minDecimal?: number;
+}) => {
+  const formatShare = (number: number) => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'decimal',
+      minimumFractionDigits: minDecimal,
+      maximumFractionDigits: maxDecimal,
+    }).format(number);
+  };
+
+  return amount && share ? formatShare(amount) : `$ ${formatShare(amount)}`;
+};

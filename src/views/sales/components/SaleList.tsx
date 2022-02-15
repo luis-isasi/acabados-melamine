@@ -10,18 +10,6 @@ const SaleList = ({ sales = [], textName, refetch }: Props) => {
   console.log({ sales });
 
   const renderSales = () => {
-    // const newProducts = sales.filter((sale) =>
-    //   sale?.attributes?.client.startsWith(textName)
-    // );
-
-    // if (newProducts.length === 0 && textName) {
-    //   return (
-    //     <p className="font-bold text-center text-3xl mt-10">
-    //       No hay resultados 😥
-    //     </p>
-    //   );
-    // }
-
     return sales.map((sale, index) => (
       <SaleItem key={sale?.code} isPar={index % 2 === 0} sale={sale} />
     ));

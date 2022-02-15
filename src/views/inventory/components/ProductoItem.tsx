@@ -4,7 +4,7 @@ import { ProductResponseI } from '@Services/product';
 import { useState } from 'react';
 import ModalProductDelete from '../Modals/ModalProductDelete';
 import ModalProductEdit from '../Modals/ModalProductEdit';
-
+import { formatAmount } from '@Utils';
 interface Props {
   isPar: boolean;
   product: ProductResponseI;
@@ -37,7 +37,9 @@ const ProductoItem = ({ isPar, product, refetch }: Props) => {
         <span>{product.attributes.name}</span>
         <span>{product.attributes.code}</span>
         <span>{product.attributes.amount}</span>
-        <span>{product.attributes.price}</span>
+        <span className="font-semibold">
+          {formatAmount({ amount: product.attributes.price })}
+        </span>
         <span>{product.attributes.description}</span>
         <div className="flex gap-4 justify-center">
           <button onClick={() => setIsOpenEdit(true)} type="button">
