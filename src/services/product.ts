@@ -10,6 +10,10 @@ export interface ProductI {
   updatedAt?: string;
 }
 
+export type SaleProductI = ProductI & {
+  saleAmount: number;
+};
+
 export interface ProductResponseI {
   id: number;
   attributes: ProductI;

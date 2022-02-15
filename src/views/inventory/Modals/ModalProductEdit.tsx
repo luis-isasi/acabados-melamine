@@ -30,7 +30,6 @@ const ModalProductEdit = ({
     },
   });
 
-  console.log({ product });
   const {
     register,
     handleSubmit,
